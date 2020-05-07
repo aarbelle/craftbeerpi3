@@ -10,7 +10,7 @@ https://www.youtube.com/watch?v=YGARUJgFWh4&t=1s
 
 Open a terminal window on Raspberry Pi and type:
 
-<code> git clone https://github.com/Manuel83/craftbeerpi3</code>
+<code> git clone https://github.com/BrewChef/craftbeerpi3</code>
 
 This will download (clone) the software to your local Raspberry Pi.
 
