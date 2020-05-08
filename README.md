@@ -17,6 +17,24 @@ This will download (clone) the software to your local Raspberry Pi.
 Type <code>cd craftbeerpi3</code> to navigate into the craftbeerpi folder.
 
 Type <code>sudo ./install.sh</code>
+Say no to do an apt-get update/upgrade, we will run it afterwords, since there are some missing dependencies.
+
+1. Run sudo apt-get update
+2. Run sudo apt-get upgrade
+3. Run sudo apt-get install python-pip y
+4. Run sudo pip install flask
+5. Run sudo pip install flask_socketio
+6. Run sudo pip install flask_classy
+7. Run sudo pip install PyYAML
+8. Run sudo pip install GitPython
+9. Run sudo pip install requests
+10. Run sudo pip install gitdb2==2.0.5
+11. Run sudo ./install.sh again. Select menu 3 "Add to autostart" then menu 5 "Start CraftBeerPi"
+12. Run sudo reboot - might not be needed, but I always do.
+
+Open browser - goto http://xxx.xxx.xxx.xxx:5000 (xxx is your RaspberryPi`s IP address.
+It all should work now. If something does not start - run sudo ./run.py - look for missing components, if any -add with 
+sudo pip install xx - where xx is the missing components name - as displayed in upper or lower - or combined letters.
 
 ## Hardware Wiring
 
