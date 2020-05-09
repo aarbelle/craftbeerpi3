@@ -1,6 +1,6 @@
 # CraftBeerPi V3.0
 
-This is CraftBeerPi version 3.0. It's currently in beta status.
+This is CraftBeerPi version 3.0. It's currently in "latest" known status.
 
 ## Introduction Video
 
@@ -17,7 +17,9 @@ This will download (clone) the software to your local Raspberry Pi.
 Type <code>cd craftbeerpi3</code> to navigate into the craftbeerpi folder.
 
 Type <code>sudo ./install.sh</code>
-Say no to do an apt-get update/upgrade, we will run it afterwords, since there are some missing dependencies.
+
+Say no to do an apt-get update/upgrade, we will run it afterwords, since we need to install some missing dependencies.
+ATT, what Raspbian should you use? well, I hva used Raspbian Buster STD (https://downloads.raspberrypi.org/raspbian_latest) - avoid full or light, to ensure successfull and problemfree installation.
 
 1. Run sudo apt-get update
 2. Run sudo apt-get upgrade
