@@ -1,7 +1,9 @@
 #!/bin/bash
 #CraftBeerPi Installer
 # Copy 2017 Manuel Fritsch
-
+sudo sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install python-pip
 confirmAnswer () {
 whiptail --title "Confirmation" --yes-button "Yes" --no-button "No"  --defaultno --yesno "$1" 10 56
 return $?
