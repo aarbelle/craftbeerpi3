@@ -123,22 +123,25 @@ show_menu () {
         9)
            confirmAnswer "Are you sure you want owerwrite default empty database"
            if [ $? = 0 ]; then
-              sudo mv /home/pi/craftbeerpi3/craftbeerpi.db craftbeerpi.db.old -y
-              sudo cp /home/pi/craftbeerpi3/upload/single.db /home/pi/craftbeerpi3/craftbeerpi.db
-              whiptail --title "Default databse is renamed to .old extension and sample db is installed" --msgbox "All CraftBeerPi Files are deleted. You must hit OK to continue." 8 78
+              sudo mv /home/pi/craftbeerpi3/craftbeerpi.db /home/pi/craftbeerpi3/craftbeerpi.db.old -y
+              sudo cp /home/pi/craftbeerpi3/upload/single.db /home/pi/craftbeerpi3/craftbeerpi.db -y
+              whiptail --title "Default databse is renamed to .old extension and sample Single vessel db is installed" --msgbox "All CraftBeerPi Files are deleted. You must hit OK to continue." 8 78
               show_menu
            else
               show_menu
            fi
            ;;
         10)
-            confirmAnswer "Are you sure you want to reboot the Raspberry Pi?"
-            if [ $? = 0 ]; then
-              sudo reboot
-            else
+           confirmAnswer "Are you sure you want owerwrite default empty database"
+           if [ $? = 0 ]; then
+              sudo mv /home/pi/craftbeerpi3/craftbeerpi.db /home/pi/craftbeerpi3/craftbeerpi.db.old -y
+              sudo cp /home/pi/craftbeerpi3/upload/single.db /home/pi/craftbeerpi3/craftbeerpi.db -y
+              whiptail --title "Default databse is renamed to .old extension and sample Herms db is installed" --msgbox "All CraftBeerPi Files are deleted. You must hit OK to continue." 8 78
               show_menu
-            fi
-            ;;
+           else
+              show_menu
+           fi
+           ;;
         11)
             confirmAnswer "Are you sure you want to reboot CraftBeerPi and delete all log files?"
             if [ $? = 0 ]; then
