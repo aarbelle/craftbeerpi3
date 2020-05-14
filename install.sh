@@ -123,9 +123,9 @@ show_menu () {
         9)
            confirmAnswer "Are you sure you want owerwrite default empty database"
            if [ $? = 0 ]; then
-              sudo mv /home/pi/craftbeerpi3/craftbeerpi.db /home/pi/craftbeerpi3/craftbeerpi.db.old -y
-              sudo cp /home/pi/craftbeerpi3/upload/single.db /home/pi/craftbeerpi3/craftbeerpi.db -y
-              whiptail --title "Default databse is renamed to .old extension and sample Single vessel db is installed" --msgbox "All CraftBeerPi Files are deleted. You must hit OK to continue." 8 78
+              sudo mv /home/pi/craftbeerpi3/craftbeerpi.db /home/pi/craftbeerpi3/craftbeerpi.db.old
+              sudo cp /home/pi/craftbeerpi3/upload/single.db /home/pi/craftbeerpi3/craftbeerpi.db
+              whiptail --title "Default databse is renamed to .old extension and sample Single vessel db is installed" --msgbox "Old database is renamed, sample database is installed. You must hit OK to continue." 8 78
               show_menu
            else
               show_menu
@@ -134,8 +134,8 @@ show_menu () {
         10)
            confirmAnswer "Are you sure you want owerwrite default empty database"
            if [ $? = 0 ]; then
-              sudo mv /home/pi/craftbeerpi3/craftbeerpi.db /home/pi/craftbeerpi3/craftbeerpi.db.old -y
-              sudo cp /home/pi/craftbeerpi3/upload/single.db /home/pi/craftbeerpi3/craftbeerpi.db -y
+              sudo mv /home/pi/craftbeerpi3/craftbeerpi.db /home/pi/craftbeerpi3/craftbeerpi.db.old
+              sudo cp /home/pi/craftbeerpi3/upload/herms.db /home/pi/craftbeerpi3/craftbeerpi.db
               whiptail --title "Default databse is renamed to .old extension and sample Herms db is installed" --msgbox "All CraftBeerPi Files are deleted. You must hit OK to continue." 8 78
               show_menu
            else
