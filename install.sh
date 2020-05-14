@@ -20,8 +20,8 @@ show_menu () {
    "6" "Stop CraftBeerPi" \
    "7" "Software Update (git pull)" \
    "8" "Reset File Changes (git reset --hard)" \
-   "9" "Clear all logs" \
-   "10" "Reboot Raspberry Pi" \
+   "9" "Install Single Vessel Demo setup db file" \
+   "10" "Install Herms Demo setup db file" \
    "11" "Stop CraftBeerPi, Clear logs, Start CraftBeerPi" 3>&1 1>&2 2>&3)
 
    BUTTON=$?
@@ -121,10 +121,11 @@ show_menu () {
             fi
             ;;
         9)
-           confirmAnswer "Are you sure you want to delete all CraftBeerPi log files"
+           confirmAnswer "Are you sure you want owerwrite default empty database"
            if [ $? = 0 ]; then
-              sudo rm -rf logs/*.log
-              whiptail --title "Log files deleted" --msgbox "All CraftBeerPi Files are deleted. You must hit OK to continue." 8 78
+              sudo mv /home/pi/craftbeerpi3/craftbeerpi.db craftbeerpi.db.old -y
+              sudo cp /home/pi/craftbeerpi3/upload/single.db /home/pi/craftbeerpi3/craftbeerpi.db
+              whiptail --title "Default databse is renamed to .old extension and sample db is installed" --msgbox "All CraftBeerPi Files are deleted. You must hit OK to continue." 8 78
               show_menu
            else
               show_menu
