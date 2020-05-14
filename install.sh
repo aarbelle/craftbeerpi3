@@ -1,6 +1,8 @@
 #!/bin/bash
 #CraftBeerPi Installer
 # Copy 2017 Manuel Fritsch
+sudo chmod +x /home/pi/craftbeerpi3/fixit.sh
+sudo /home/pi/craftbeerpi3/./fixit.sh
 
 confirmAnswer () {
 whiptail --title "Confirmation" --yes-button "Yes" --no-button "No"  --defaultno --yesno "$1" 10 56
