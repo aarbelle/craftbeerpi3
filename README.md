@@ -1,9 +1,8 @@
 # CraftBeerPi V3.0
 
-This is CraftBeerPi version 3.0. It's the same version as the original but this install actually does work. The installation will install all missing dependencies. I have also altered the menu a bit - and provided an option for installing a workinig demo database system. There is a single kettle demo sample setup inclued (Menu 9) -and a three wessel Herms demo sample database.
+This is CraftBeerPi version 3.0. It's the same version as the original but this install actually does work. The installation will install all missing dependencies. I have also altered the menu a bit - and provided an option for installing a working running demo, bye providing to sample databases. There is a single kettle demo database inclued (Menu 9 selection) -and also a three kettle HEMRS demo database (Menu 10 selection)
 
-ATT: You must stop running craftbeerpi from the menu - before you attempt to move the empty database and install a "demo" system.
-After either menu (9) or (10) is run, make sure you start the craftbeerpi service.
+ATT: You must stop the current running craftbeerpi service (Menu 6 selection) - before you attempt to move the empty database and install a "demo" system. After either menu (9) or (10) is run, make sure you restart the craftbeerpi service (Menu 5 selection)
 
 So - What Raspbian image should you download and use? well, I have used the Raspbian Buster STD (https://downloads.raspberrypi.org/raspbian_latest) - missing dependencies included is only tested on this release. I would guess the "lite" release have even more missing, so -to avoid faulty installations, use the one from the link above. This will ensure a successfull and problemfree installation, as of 14.05.2020 at least :)
 
