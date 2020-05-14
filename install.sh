@@ -1,8 +1,6 @@
 #!/bin/bash
 #CraftBeerPi Installer
 # Copy 2017 Manuel Fritsch
-sudo chmod +x /home/pi/craftbeerpi3/fixit.sh
-sudo /home/pi/craftbeerpi3/./fixit.sh
 
 confirmAnswer () {
 whiptail --title "Confirmation" --yes-button "Yes" --no-button "No"  --defaultno --yesno "$1" 10 56
@@ -12,8 +10,8 @@ return $?
 show_menu () {
    # We show the host name right in the menu title so we know which Pi we are connected to
    OPTION=$(whiptail --title "CraftBeerPi 3.0" --menu "Choose your option:" 15 56 7 \
-   "1" "Install CraftBeerPi" \
-   "2" "Clear Database" \
+   "1" "Fix missing dependencies" \
+   "2" "Install CraftBeerPi" \
    "3" "Add To Autostart" \
    "4" "Remove From Autostart" \
    "5" "Start CraftBeerPi" \
@@ -32,6 +30,18 @@ show_menu () {
    if [ $BUTTON -eq 0 ]; then
        case $OPTION in
        1)
+          confirmAnswer "Are you sure you want to install missing dependencies?"
+          if [ $? = 0 ]; then
+            sudo chmod +x /home/pi/craftbeerpi3/fixit.sh
+            sudo /home/pi/craftbeerpi3/./fixit.sh
+            sudo rm -f craftbeerpi.db
+            whiptail --title "Dependencies installed" --msgbox "All the missing updates where installed. You must hit OK to continue." 8 78
+            show_menu
+          else
+           show_menu
+          fi
+          ;;
+       2)
            confirmAnswer "Would you like run apt-get update & apt-get upgrade?"
            if [ $? = 0 ]; then
              apt-get -y update; apt-get -y upgrade;
@@ -59,16 +69,6 @@ show_menu () {
            whiptail --title "Installition Finished" --msgbox "CraftBeerPi installation finished! You must hit OK to continue." 8 78
            show_menu
            ;;
-       2)
-          confirmAnswer "Are you sure you want to clear the CraftBeerPi. All hardware setting will be deleted"
-          if [ $? = 0 ]; then
-            sudo rm -f craftbeerpi.db
-            whiptail --title "Database Delted" --msgbox "The CraftBeerPi database was succesfully deleted. You must hit OK to continue." 8 78
-            show_menu
-          else
-           show_menu
-          fi
-          ;;
        3)
            confirmAnswer "Are you sure you want to add CraftBeerPi to autostart"
            if [ $? = 0 ]; then
