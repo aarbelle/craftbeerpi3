@@ -1,6 +1,12 @@
 # CraftBeerPi V3.0
 
-This is CraftBeerPi version 3.0. It's currently in "latest" known status.
+This is CraftBeerPi version 3.0. It's the same version as the original but this install actually does work. The installation will install all missing dependencies. I have also altered the menu a bit - and provided an option for installing a workinig demo database system. There is a single kettle demo sample setup inclued (Menu 9) -and a three wessel Herms demo sample database.
+
+ATT: You must stop running craftbeerpi from the menu - before you attempt to move the empty database and install a "demo" system.
+After either menu (9) or (10) is run, make sure you start the craftbeerpi service.
+
+So - What Raspbian image should you download and use? well, I have used the Raspbian Buster STD (https://downloads.raspberrypi.org/raspbian_latest) - missing dependencies included is only tested on this release. I would guess the "lite" release have even more missing, so -to avoid faulty installations, use the one from the link above. This will ensure a successfull and problemfree installation, as of 14.05.2020 at least :)
+
 
 ## Introduction Video
 
@@ -17,22 +23,6 @@ This will download (clone) the software to your local Raspberry Pi.
 Type <code>cd craftbeerpi3</code> to navigate into the craftbeerpi folder.
 
 Type <code>sudo ./install.sh</code>
-
-Say no to do an apt-get update/upgrade, we will run it afterwords, since we need to install some missing dependencies.
-ATT, what Raspbian should you use? well, I hva used Raspbian Buster STD (https://downloads.raspberrypi.org/raspbian_latest) - avoid full or light, to ensure successfull and problemfree installation.
-
-1. Run sudo apt-get update
-2. Run sudo apt-get upgrade
-3. Run sudo apt-get install python-pip y
-4. Run sudo pip install flask
-5. Run sudo pip install flask_socketio
-6. Run sudo pip install flask_classy
-7. Run sudo pip install PyYAML
-8. Run sudo pip install GitPython
-9. Run sudo pip install requests
-10. Run sudo pip install gitdb2==2.0.5
-11. Run sudo ./install.sh again. Select menu 3 "Add to autostart" then menu 5 "Start CraftBeerPi"
-12. Run sudo reboot - might not be needed, but I always do.
 
 Open browser - goto http://xxx.xxx.xxx.xxx:5000 (xxx is your RaspberryPi`s IP address.
 It all should work now. If something does not start - run sudo ./run.py - look for missing components, if any -add with 
