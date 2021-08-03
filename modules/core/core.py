@@ -151,15 +151,18 @@ class SensorAPI(object):
         filename = "./logs/%s_%s.log" % (prefix, str(id))
         formatted_time = strftime("%Y-%m-%d %H:%M:%S", localtime())
         msg = str(formatted_time) + "," +str(value) + "\n"
-        last_log = self.log_history.get(filename, (None, None))
-        if value == last_log[1]:
-            return
-        with open(filename, "a") as file:
-            if last_log[0] is not None:
-                file.write(str(last_log[0] ) + "," + str(last_log[0]) + "\n")
-            self.log_history[filename] = (formatted_time, value)
-            file.write(msg)
-
+        try:
+            last_log = self.log_history.get(filename, (None, None))
+            if value == last_log[1]:
+                return
+            with open(filename, "a") as file:
+                if last_log[0] is not None:
+                    file.write(str(last_log[0] ) + "," + str(last_log[0]) + "\n")
+                self.log_history[filename] = (formatted_time, value)
+                file.write(msg)
+        except:
+             with open(filename, "a") as file:
+                file.write(msg)
     def log_action(self, text):
         filename = "./logs/action.log"
         formatted_time = strftime("%Y-%m-%d %H:%M:%S", localtime())
