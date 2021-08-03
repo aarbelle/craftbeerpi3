@@ -154,7 +154,7 @@ class SensorAPI(object):
         try:
             last_log = self.log_history.get(filename, (None, None))
             if value == last_log[1]:
-                return
+                self.log_history[filename] = (formatted_time, value)
             with open(filename, "a") as file:
                 if last_log[0] is not None:
                     file.write(str(last_log[0] ) + "," + str(last_log[0]) + "\n")
