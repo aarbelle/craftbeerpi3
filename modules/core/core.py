@@ -149,17 +149,19 @@ class SensorAPI(object):
 
     def save_to_file(self, id, value, prefix="sensor"):
         filename = "./logs/%s_%s.log" % (prefix, str(id))
-        formatted_time = strftime("%Y-%m-%d %H:%M:%S", localtime())
+        this_time = localtime()
+        formatted_time = strftime("%Y-%m-%d %H:%M:%S", this_time)
         msg = str(formatted_time) + "," +str(value) + "\n"
         try:
-            last_log = self.log_history.get(filename, (None, None))
+            last_log = self.log_history.get(filename, (None, None, None))
             if value == last_log[1]:
-                self.log_history[filename] = (formatted_time, value)
+                self.log_history[filename] = (formatted_time, value, this_time)
+#                 if this_time-last_log[2] > 60*10:
                 return
             with open(filename, "a") as file:
                 if last_log[0] is not None:
                     file.write(str(last_log[0] ) + "," + str(last_log[1]) + "\n")
-                self.log_history[filename] = (formatted_time, value)
+                self.log_history[filename] = (formatted_time, value, this_time)
                 file.write(msg)
         except:
              with open(filename, "a") as file:
